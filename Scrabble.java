@@ -97,10 +97,18 @@ public class Scrabble {
 			String input = in.readString();
 			if (input.equals(".")) {
 				break;
+			} 
+			//checks if the input is Subsetof hand and ifa real word from the Dictionary
+			if (!MyString.subsetOf(input, hand)) {
+				System.out.println("Invalid word. Try again.");
+				continue;
 			} if (!isWordInDictionary(input)) {
 				System.out.println("No such word in the dictionary. Try again.");
+				System.out.println();
+				continue;
 			}
-			hand = MyString.remove(input, hand);
+			
+			hand = MyString.remove(hand, input);
 			score += wordScore(input);
 			System.out.println(input + " earned " + wordScore(input) + " points. Score: " + score + " points");
 			System.out.println();
@@ -143,7 +151,7 @@ public class Scrabble {
 		////testScrabbleScore();    
 		////testCreateHands();  
 		////testPlayHands();
-		////playGame();
+		playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
