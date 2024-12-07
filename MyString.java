@@ -12,8 +12,8 @@ public class MyString {
         System.out.println(subsetOf("pass", "space"));
         System.out.println(randomStringOfLetters(3));
         System.out.println(randomStringOfLetters(5));
-        System.out.println(remove("meet", "committee"));
-        System.out.println(remove("o", "hello"));
+        System.out.println(remove("committee", "meet"));
+        System.out.println(remove("abcdef", "ace"));
         System.out.println(insertRandomly('s', "cat"));
 
     }
@@ -116,14 +116,15 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-        for (int i = 0; i < str1.length(); i++) {
-            for (int j = 0; j < str2.length(); j++) {
-                if (str1.charAt(i) == str2.charAt(j)) {
-                    str2 = str2.substring(0, j) + str2.substring(j + 1);
+        for (int i = 0; i < str2.length(); i++) {
+            for (int j = 0; j < str1.length(); j++) {
+                if (str2.charAt(i) == str1.charAt(j)) {
+                    str1 = str1.substring(0, j) + str1.substring(j + 1);
+                    break;
                 }
             }
         }
-        return str2;
+        return str1;
     }
 
     /**
